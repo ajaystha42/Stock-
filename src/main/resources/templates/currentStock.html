@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>COTIVITI INVENTORY</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+ 
+ 
+ 
+ 
+ 
+ 
+	<table style="border: 5px">
+		<tr>
+
+			<th>Name</th>
+			<th>Price</th>
+			<th>Category Name</th>
+
+		</tr>
+		<tr th:each="aj: ${currentStocks}">
+			<td th:text="${aj.product.productName}" />
+			
+			<td th:text="${aj.category.categoryName}" />
+			<td th:text="${aj.quantity}" />
+			<td th:text="${aj.unit.unitName}" />
+			<td><a th:href="@{/edit(id=${aj.id})}">Edit</a> <a
+				th:href="@{/delete(id=${aj.id})}">Delete </td>
+		</tr>
+
+
+	</table>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </body>
+ </html>
+ 

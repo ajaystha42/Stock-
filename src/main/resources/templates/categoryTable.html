@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Category Table</title>
+<link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+<h1 th:text="${message}"></h1>
+  <form action="#" th:action="@{/main}" th:object="${categories}"
+		method="get">
+		
+		<input type="submit" value="<< Dashboard" />
+	</form>
+ 
+ <font color="brown">Category Table</font>
+	<table >
+		<tr>
+			<th>CategoryName</th>
+<!--			<th>  <input type="hidden" th:value="${getDate}" /></th>-->
+		</tr>
+		
+		<tr th:each="aj: ${categories}">
+			<td th:text="${aj.categoryName}" />
+			<td><a th:href="@{/editCategory(id=${aj.id})}">Edit</a> 
+				<a th:href="@{/deleteCategory(id=${aj.id})}">Delete</a> </td>
+		</tr>
+	</table>
+ 
+ </body>
+ 
+ </html>
+ 

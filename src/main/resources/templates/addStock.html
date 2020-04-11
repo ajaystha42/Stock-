@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>add stock</title>
+<link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<font color="brown">ADD STOCK</font>
+	</div>
+	<div class="container-fluid">
+		<form action="#" th:action="@{/addStock}" th:object="${stocks}"
+			method="post">
+
+			<p>
+				<a href="#"> Categories : <select style="width: 650px"
+					id="category" onchange="myFunction(this)" th:field="*{category}">
+						<option th:value="0" th:utext="SELECT" />
+						<option th:each="category : ${categories}"
+							th:value="${category.id}" th:utext="${category.categoryName}">
+						</option>
+				</select>
+				</a>
+			<p>
+				Products : <select id="product" name="product" th:field="*{product}">
+					<option th:each="product: ${products}" th:value="${product.id}"
+						th:utext="${product.productName}" />
+				</select>
+			</p>
+
+			<p>
+				Quantity : <input type="text" th:field="*{quantity}" />
+			</p>
+
+
+			<input type="hidden" th:field="*{date}" />
+
+
+			<p>
+				units :<select id="unit" name="unit" th:field="*{units}">
+					<option th:each="unit : ${units}" th:value="${unit.id}"
+						th:utext="${unit.unitName}" />
+				</select>
+			</p>
+
+
+			<p>
+				<input type="submit" value="Submit" />
+			</p>
+		</form>
+
+		<script>
+			function myFunction(redDiv) {
+				const div = document.getElementById('product');
+				var e = document.getElementById("category");
+				var id = e.options[e.selectedIndex].value;
+				console.log(id);
+				console.log(redDiv.parentElement);
+				redDiv.parentElement.href = '/addStock?id=' + id;
+			}
+		</script>
+
+
+	</div>
+</body>
+
+</html>
+
+

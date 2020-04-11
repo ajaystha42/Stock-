@@ -1,0 +1,36 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Main Stock Table</title>
+<link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+<form action="#" th:action="@{/main}" th:object="${categories}"
+		method="get">
+		
+		<input type="submit" value="<< Dashboard" />
+	</form>
+	<table >
+		<tr>
+		
+			<th>Unit Name</th>
+		</tr>
+		<tr th:each="aj: ${units}">
+			
+			<td th:text="${aj.unitName}" />
+			
+			<td><a th:href="@{/editUnit(id=${aj.id})}">Edit</a> <a
+				th:href="@{/deleteUnit(id=${aj.id})}">Delete </td>
+
+		</tr>
+
+
+	</table>
+
+
+
+
+
+</body>
+</html>

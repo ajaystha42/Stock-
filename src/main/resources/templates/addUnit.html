@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>add unit</title>
+<link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<font color="brown">ADD UNITS</font>
+	</div>
+	<div class="container-fluid"><form action="#" th:action="@{/addUnit}" th:object="${unit}"
+		method="post">
+		<p>
+			Name: <input type="text" th:field="*{unitName}" />
+		</p>
+
+
+		<p>
+			<input type="submit" value="Insert" />
+		</p>
+	</form>
+</div>
+</body>
+
+</html>

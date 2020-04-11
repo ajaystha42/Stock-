@@ -1,0 +1,50 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Main Stock Table</title>
+<link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+<form action="#" th:action="@{/main}" th:object="${categories}"
+		method="get">
+		
+		<input type="submit" value="<< Dashboard" />
+	</form>
+	<table >
+		<tr>
+			<th>Date</th>
+			<th>Category Name</th>
+			<th>Product Name</th>
+			<th>Unit</th>
+			<th>Quantity</th>
+
+
+
+
+		</tr>
+		<tr th:each="aj: ${sales}">
+			<td th:text="${aj.date}" />
+			<td th:text="${aj.category.categoryName}" />
+			<td th:text="${aj.product.productName}" />
+			<td th:text="${aj.units.unitName}" />
+			<td th:text="${aj.quantity}" />
+			
+
+		</tr>
+
+
+	</table>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

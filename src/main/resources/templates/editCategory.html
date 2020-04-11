@@ -1,0 +1,26 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>COTIVITI INVENTORY</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+
+
+	<form action="#" th:action="@{/editCategory(id=${categories.id})}" th:object="${categories}"
+		method="post">
+		<p>
+			Name: <input type="text" th:field="*{categoryName}" />
+		</p>
+		
+			
+		<p>
+			<input type="submit" value="Update" />
+		</p>
+	</form>
+
+</body>
+
+</html>

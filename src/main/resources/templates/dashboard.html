@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Dashboard</title>
+<link href="css/style.css" rel="stylesheet" />
+
+</head>
+
+<body class="sb-nav-fixed">
+	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+		<a class="navbar-brand" href="main">INVENTORY DETAILS</a>
+
+		<form
+			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+			<div class="input-group"></div>
+			</div>
+		</form>
+		
+	</nav>
+	<div id="layoutSidenav">
+		<div id="layoutSidenav_nav">
+			<nav class="sb-sidenav accordion sb-sidenav-dark"
+				id="sidenavAccordion">
+				<div class="sb-sidenav-menu">
+					<div class="nav">
+
+						<button class="dropdown-btn">
+							<font style="color:white" size="large">TABLES</font>
+						</button>
+						<div class="dropdown-container">
+							<a style="color:white" th:href="@{/categoryTable}">Category table</a> <a
+							style="color:white"	th:href="@{/productTable}">Product table</a>
+							<li><a style="color:white" th:href="@{/currentStockTable}">Current Stock
+									table</a></li>
+							<li><a style="color:white" th:href="@{/mainStockTable}">Main Stock table</a></li>
+							<li><a style="color:white" th:href="@{/salesTable}">Sales table</a></li>
+							<li><a style="color:white" th:href="@{/unitTable}">Unit table</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div id="layoutSidenav_content">
+			<main>
+			<div class="container-fluid">
+				<h1 class="mt-4">Dashboard</h1>
+
+				<div class="row">
+					<div class="col-xl-3 col-md-6">
+						<div class="card bg-primary text-white mb-4">
+							<div class="card-body">
+								<form action="#" th:action="@{/addCategory}"
+									th:object="${categories}" method="get">
+									<input type="submit" value="ADD CATEGORY" />
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-md-6">
+						<div class="card bg-primary text-white mb-4">
+							<div class="card-body">
+								<form action="#" th:action="@{/addProduct}"
+									th:object="${categories}" method="get">
+									<input type="submit" value="ADD PRODUCTS" />
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-md-6">
+						<div class="card bg-primary text-white mb-4">
+							<div class="card-body">
+								<form action="#" th:action="@{/addUnit}"
+									th:object="${categories}" method="get">
+									<input type="submit" value="ADD UNITS" />
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-md-6">
+						<div class="card bg-primary text-white mb-4">
+							<div class="card-body">
+								<form action="#" th:action="@{/addStock}"
+									th:object="${categories}" method="get">
+									<input type="submit" value="ADD STOCK" />
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6">
+					<div class="card bg-primary text-white mb-4">
+						<div class="card-body">
+							<form action="#" th:action="@{/sales}" 
+								method="get">
+								<input type="submit" value="SALES" />
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xl-6">
+					<div class="card mb-4">
+						<div class="card-header">
+							<i class="fas fa-chart-area mr-1"></i>CURRENT STOCK
+						</div>
+						<div class="card-bodyy">
+							<div>
+								<table style="width: 100%">
+									<tbody>
+										<tr>
+
+											<th>Product</th>
+											<th>Category</th>
+											<th>Quantity</th>
+											<th>Units</th>
+										</tr>
+
+										<tr th:each="aj: ${currentStocks}">
+											<td th:text="${aj.product.productName}" />
+											<td th:text="${aj.category.categoryName}" />
+											<td th:text="${aj.quantity}" />
+											<td th:text="${aj.unit.unitName}" />
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-6">
+					<div class="card mb-4">
+						<div class="card-header">
+							<i class="fas fa-chart-bar mr-1"></i>Today's Sale
+						</div>
+						<div class="card-body">
+
+
+
+							<table style="width: 500px">
+								<tbody>
+									<tr>
+										<th>Date</th>
+										<th>Category</th>
+										<th>Product</th>
+										<th>Quantity</th>
+										<th>Units</th>
+									</tr>
+									<tr th:each="aj: ${salesByDate}">
+										<td th:text="${aj.date}">
+										<td th:text="${aj.category.categoryName}">
+										<td th:text="${aj.product.productName}">
+										<td th:text="${aj.quantity}">
+										<td th:text="${aj.units.unitName}">
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-12">
+				<div class="card mb-12">
+					<div class="card-header">
+						<i class="fas fa-chart-bar mr-1"></i>Sale
+					</div>
+
+					<div id="chart"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"
+		src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" th:inline="javascript">
+		google.charts.load('current', {
+			'packages' : [ 'corechart' ]
+		});
+		google.charts.setOnLoadCallback(drawChart);
+		console.log([[${saleList}]])
+		function drawChart() {
+			var data = google.visualization.arrayToDataTable([[${saleList}]]);
+
+			var options = {
+				title : 'Sales',
+				curveType : 'function',
+				legend : {
+					position : 'bottom'
+				}
+			};
+
+			var chart = new google.visualization.LineChart(document
+					.getElementById('chart'));
+
+			chart.draw(data, options);
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>add category</title>
+<link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container"><font color="brown">ADD PRODUCTS</font></div>
+	<div class="container-fluid"><form action="#" th:action="@{/addProduct}" th:object="${products}"
+		method="post">
+		<p>
+			Name    : <input type="text" th:field="*{productName}" />
+		</p>
+
+		<p>
+			Price   : <input type="text" th:field="*{price}" />
+		</p>
+
+		<p>
+			Category  : <select id="category" name="category" th:field="*{category}">
+				<option th:each="category : ${categories}" th:value="${category.id}"
+					th:utext="${category.categoryName}" />
+			</select>
+		</p>
+	
+		<p>
+			<input type="submit" value="Submit" />
+		</p>
+	</form>
+</div>
+</body>
+
+</html>
+
+

@@ -1,0 +1,43 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Current Stock Table</title>
+<link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+<form action="#" th:action="@{/main}" th:object="${categories}"
+		method="get">
+		
+		<input type="submit" value="<< Dashboard" />
+	</form>
+<font color="brown">Current Stock Table</font>
+	<table>
+		<tr>
+
+			<th>Product</th>
+			<th>Category</th>
+			<th>Quantity</th>
+			<th>Units</th>
+		</tr>
+
+		<tr th:each="aj: ${currentStocks}">
+			<td th:text="${aj.product.productName}" />
+			
+			<td th:text="${aj.category.categoryName}" />
+			<td th:text="${aj.quantity}" />
+			<td th:text="${aj.unit.unitName}" />
+		
+		</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
